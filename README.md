@@ -1,7 +1,8 @@
-# DS_Contact_Process
+# CONTACT PROCESS
 ### GIADA PALMA - VR471280
 Project for the probability and statistics course (Master's Degree Data Science)
 
+___
 
 The contact process is a discrete Markov chain with state space *S := {0,1}*. *x ∈ S*. So if *xi = 1* we say vertex *i* is *infected*, if *xi = 0* we say vertex *i* is *susceptible*.
 
@@ -23,6 +24,7 @@ def return_neighbour_index(target_index, population):
     
     return target_neighbour_index 
 ```
+
 
 
 The function below transforms all infected vertices of a population to susceptible. 
@@ -50,6 +52,7 @@ def return_single_time_value(population_graph, lambda_input):
 ```
 
 
+
 By the law of large numbers T^ is an estimate for the expected value of T.
 The function below returns T^.
 ```python
@@ -63,9 +66,11 @@ def return_average_time_steps(lambda_input, number_of_runs):
     average = total_time_steps / number_of_runs
     return average
 ```
+
+
 ___
 
-# SIMULATING WITH INCREASING λ
+## SIMULATING WITH INCREASING λ
 
 The function below simulates the process by running it a specified number of times, with λ increasing.
 It returns two arrays:
@@ -88,16 +93,19 @@ def simulate(number_of_runs):
 
 
 The result is the plot below
-<br>
+
+
 ![Graph for increasing lambda](Increasing_lambda.png)
 
 As we can see T^ depends on *λ*:
 - for *λ* small (i.e. 0.1 < *λ* < 0.9) T^ also small
 - as soon as *λ* crosses the critical value *λc* (i.e. roughly 0.9) T starts growing faster.
 
+
+
 ___
 
-# SIMULATING WITH INCREASING NUMBER OF VERTICES
+## SIMULATING WITH INCREASING NUMBER OF VERTICES
 
 The function below simulates the process by running it a specified number of times, with the number of vertices increasing.
 It returns two arrays:
@@ -120,8 +128,12 @@ def simulate_pop_size(lambda_input, number_of_runs, pop_size):
 ```
 
 The result is the plot below
-<br>
+
+
 ![Graph for increasing population size](Population_size_1000.png)
+
+As we can see T^ depends not only on *λ* being larger or smaller than the critical value, but also on the number of vertices.
+In fact with a large number of vertices a larger number of T^ is needed to reach the absorbing state, where all vertices are susceptible (i.e equals to 0).
 
 
 
