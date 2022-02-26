@@ -85,5 +85,6 @@ def simulate(number_of_runs):
 
 
 The result is the plot below
-![alt text](increasing lambda.png)
+<br>
+![Graph for lambda increasing]('increasing lambda.png')
 
