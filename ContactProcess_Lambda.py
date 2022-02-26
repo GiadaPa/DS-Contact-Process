@@ -19,7 +19,6 @@ import matplotlib.pyplot as plt
 
 
 
-
 # Function to print the index of the neighbour for line graph
 def return_neighbour_index(target_index, population):   
     if target_index == 0:
@@ -70,7 +69,6 @@ def return_average_time_steps(lambda_input, number_of_runs):
     
     average = total_time_steps / number_of_runs
     return average
-
 
 
 
@@ -127,7 +125,6 @@ ax1.set_ylabel('Average time-steps', fontsize=(8))
 ax1.set_xlabel('λ', fontsize=(8))
 ax1.legend()
 
-
 #Lambda goes from 0.1 to 5
 ax3.plot(lambdas5_100, simuls5_100, label='100 runs', color='r')
 ax3.plot(lambdas5_1000, simuls5_1000, label='1000 runs', color='b')
@@ -135,33 +132,5 @@ ax3.set_ylabel('Average time-steps', fontsize=(8))
 ax3.set_xlabel('λ', fontsize=(8))
 ax3.legend()
 
+fig.savefig("Increasing_lambda")
 
-fig.savefig("Increasing lambda")
-
-
-
-
-
-
-
-
-########################
-'''
-# Function to print the index of the neighbour for ring graph
-def return_neighbour_index(target_index, population_graph):   
-    if target_index == 0:
-        target_neighbour_index = 1
-
-    elif target_index == len(population_graph) - 1:
-        target_neighbour_index = target_index  - 1
-        
-    elif np.random.rand() < (1/3):
-        target_neighbour_index = target_index - 1
-    
-    elif  np.random.rand() < (2/3):
-        target_neighbour_index = target_index
-    
-    else:
-        target_neighbour_index = target_index + 1
-    return target_neighbour_index
-'''

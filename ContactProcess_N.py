@@ -3,21 +3,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-
 # PROBLEM
 # How many time-steps are needed for a population to go from all its individuals infected (i.e. = 1)
 # to all individuals susceptibles (i.e. = 0)
 
 
 # INPUT PARAMETERS
-# The infection rate lambda is 0.9
+# The infection rate lambda is 0.1 and 0.9
 # Size of the population inceases
 # How many times the simulation is run in order to get the average time steps
 
 
 # OUTPUTS
 # Time-steps 
-
 
 
 
@@ -86,6 +84,7 @@ def return_average_time_steps(lambda_input, number_of_runs, pop_size):
 
 
 
+# Function to simulate the process
 def simulate_pop_size(lambda_input, number_of_runs, pop_size):
     simulations = np.array([])
     individuals = np.array([])
@@ -95,56 +94,79 @@ def simulate_pop_size(lambda_input, number_of_runs, pop_size):
     while pop_size > 2:
         simulations = np.append(simulations, return_average_time_steps(lambda_input, number_of_runs, population_size))
         individuals = np.append(individuals, pop_size)
-        pop_size -= 250
+        pop_size -= 250 #Change this value for different plots
         population_size = return_population(pop_size)
         
     return simulations, individuals
 
 
 
-simuls, individuals = simulate_pop_size(0.1,5,5000)
-simuls1, individuals1 = simulate_pop_size(0.9,5, 5000)
+"""
+# FUNCTION CALLS POPULATION = 100
+simuls, individuals = simulate_pop_size(0.1, 100, 100)
+simuls1, individuals1 = simulate_pop_size(0.9, 100, 100)
 
-# PLOTS
+
+# PLOTS POPULATION = 100
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(15,10))
 fig.suptitle('Evolution of the curve based on population size growing')
 
-ax1.plot(individuals, simuls, label='5 runs  \nλ = 0.1', color='y')
+ax1.plot(individuals, simuls, label='100 runs  \nλ = 0.1', color='k')
 ax1.set_ylabel('Average time-steps', fontsize=(8))
 ax1.set_xlabel('Population size', fontsize=(8))
 ax1.legend()
 
-ax2.plot(individuals1, simuls1, label='5 runs  \nλ = 0.9', color='y')
+ax2.plot(individuals1, simuls1, label='100 runs  \nλ = 0.9', color='k')
 ax2.set_ylabel('Average time-steps', fontsize=(8))
 ax2.set_xlabel('Population size', fontsize=(8))
 ax2.legend()
 
-fig.savefig("Population size 5000")
-plt.show()
+fig.savefig("Population_size_100")
 
 
-'''
-# FUNCTION CALLS
-simuls, individuals = simulate_pop_size(0.1, 50, 1000)
-simuls2, individuals2 = simulate_pop_size(0.9, 50, 1000)
-#simuls3, individuals3 = simulate_pop_size(5, 10, 1000)
+#-----------------------------------------------------------------
+# FUNCTION CALLS POPULATION = 1000
+simuls, individuals = simulate_pop_size(0.1, 10, 1000)
+simuls1, individuals1 = simulate_pop_size(0.9, 10, 1000)
 
 
-# PLOTS
+# PLOTS POPULATION = 1000
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(15,10))
 fig.suptitle('Evolution of the curve based on population size growing')
 
-ax1.plot(individuals, simuls, label='50 runs  \nλ = 0.1', color='y')
+ax1.plot(individuals, simuls, label='10 runs  \nλ = 0.1')
 ax1.set_ylabel('Average time-steps', fontsize=(8))
 ax1.set_xlabel('Population size', fontsize=(8))
 ax1.legend()
 
-ax2.plot(individuals2, simuls2, label='50 runs  \nλ = 0.9', color='y')
+ax2.plot(individuals1, simuls1, label='10 runs  \nλ = 0.9')
 ax2.set_ylabel('Average time-steps', fontsize=(8))
 ax2.set_xlabel('Population size', fontsize=(8))
 ax2.legend()
 
-fig.savefig("Population size 1000")
-plt.show()
+fig.savefig("Population_size_1000")
 
-'''
+
+"""
+#-----------------------------------------------------------------
+# FUNCTION CALLS POPULATION = 5000
+simuls, individuals = simulate_pop_size(0.1,2,5000)
+simuls1, individuals1 = simulate_pop_size(0.9,2, 5000)
+
+
+# PLOTS POPULATION = 5000
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(15,10))
+fig.suptitle('Evolution of the curve based on population size growing')
+
+ax1.plot(individuals, simuls, label='2 runs  \nλ = 0.1', color='y')
+ax1.set_ylabel('Average time-steps', fontsize=(8))
+ax1.set_xlabel('Population size', fontsize=(8))
+ax1.legend()
+
+ax2.plot(individuals1, simuls1, label='2 runs  \nλ = 0.9', color='y')
+ax2.set_ylabel('Average time-steps', fontsize=(8))
+ax2.set_xlabel('Population size', fontsize=(8))
+ax2.legend()
+
+fig.savefig("Population_size_5000")
+

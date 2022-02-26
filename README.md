@@ -4,7 +4,8 @@ Project for the probability and statistics course (Master's Degree Data Science)
 
 ___
 
-The contact process is a discrete Markov chain with state space *S := {0,1}*. *x ∈ S*. So if *xi = 1* we say vertex *i* is *infected*, if *xi = 0* we say vertex *i* is *susceptible*.
+The contact process is a discrete Markov chain with state space *S := {0,1}*. *x ∈ S*. 
+So if *xi = 1* we say vertex *i* is *infected*, if *xi = 0* we say vertex *i* is *susceptible*.
 
 The function below returns the index of the neighbours of the current vertex.
 ```python
@@ -28,7 +29,7 @@ def return_neighbour_index(target_index, population):
 
 
 The function below transforms all infected vertices of a population to susceptible. 
-It returns the T (i.e. the time steps needed to reach the absorbing state were all vertices are suceptible).
+It returns the *T* (i.e. the time steps needed to reach the absorbing state were all vertices are suceptible).
 ```python
 
 def return_single_time_value(population_graph, lambda_input):
@@ -53,8 +54,8 @@ def return_single_time_value(population_graph, lambda_input):
 
 
 
-By the law of large numbers T^ is an estimate for the expected value of T.
-The function below returns T^.
+By the law of large numbers *T^* is an estimate for the expected value of *T*.
+The function below returns *T^*.
 ```python
 def return_average_time_steps(lambda_input, number_of_runs):    
     total_time_steps = 0
@@ -72,10 +73,10 @@ ___
 
 ## SIMULATING WITH INCREASING λ
 
-The function below simulates the process by running it a specified number of times, with λ increasing.
+The function below simulates the process by running it a specified number of times, with *λ* increasing.
 It returns two arrays:
-- of λ values to be plotted on the x axis  
-- of T value for each λ calculated from the runs of the simulation
+- of *λ* values to be plotted on the x axis  
+- of *T* value for each *λ* calculated from the runs of the simulation
 ```python
 def simulate(number_of_runs):
 
@@ -97,9 +98,9 @@ The result is the plot below
 
 ![Graph for increasing lambda](Increasing_lambda.png)
 
-As we can see T^ depends on *λ*:
-- for *λ* small (i.e. 0.1 < *λ* < 0.9) T^ also small
-- as soon as *λ* crosses the critical value *λc* (i.e. roughly 0.9) T starts growing faster.
+As we can see *T^* depends on *λ*:
+- for *λ* small (i.e. 0.1 < *λ* < 0.9) *T^* is also small
+- as soon as *λ* crosses the critical value *λc* (i.e. roughly 0.9) *T^* starts growing faster.
 
 
 
@@ -127,13 +128,16 @@ def simulate_pop_size(lambda_input, number_of_runs, pop_size):
     return simulations, individuals
 ```
 
-The result is the plot below
+The result can be seen in the plots below
 
+![Graph for increasing population size](Population_size_100.png)
 
 ![Graph for increasing population size](Population_size_1000.png)
 
-As we can see T^ depends not only on *λ* being larger or smaller than the critical value, but also on the number of vertices.
-In fact with a large number of vertices a larger number of T^ is needed to reach the absorbing state, where all vertices are susceptible (i.e equals to 0).
+![Graph for increasing population size](Population_size_5000.png)
+
+As we can see *T^* depends not only on *λ* being larger or smaller than the critical value, but also on the number of vertices.
+In fact with a large number of vertices, also a larger number of *T^* is needed to reach the absorbing state.
 
 
 
