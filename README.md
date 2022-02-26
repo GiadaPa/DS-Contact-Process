@@ -63,6 +63,9 @@ def return_average_time_steps(lambda_input, number_of_runs):
     average = total_time_steps / number_of_runs
     return average
 ```
+___
+
+# SIMULATING WITH INCREASING λ
 
 The function below simulates the process by running it a specified number of times, with λ increasing.
 It returns two arrays:
@@ -87,4 +90,40 @@ def simulate(number_of_runs):
 The result is the plot below
 <br>
 ![Graph for increasing lambda](Increasing_lambda.png)
+
+As we can see T^ depends on *λ*:
+- for *λ* small (i.e. 0.1 < *λ* < 0.9) T^ also small
+- as soon as *λ* crosses the critical value *λc* (i.e. roughly 0.9) T starts growing faster.
+
+___
+
+# SIMULATING WITH INCREASING NUMBER OF VERTICES
+
+The function below simulates the process by running it a specified number of times, with the number of vertices increasing.
+It returns two arrays:
+- of population sizes (i.e. number of vertices) to be plotted on the x axis
+- of T value for each run with a different population size
+```python
+def simulate_pop_size(lambda_input, number_of_runs, pop_size):
+    simulations = np.array([])
+    individuals = np.array([])
+
+    population_size = return_population(pop_size)
+
+    while pop_size > 2:
+        simulations = np.append(simulations, return_average_time_steps(lambda_input, number_of_runs, population_size))
+        individuals = np.append(individuals, pop_size)
+        pop_size -= 250
+        population_size = return_population(pop_size)
+        
+    return simulations, individuals
+```
+
+The result is the plot below
+<br>
+![Graph for increasing population size](Population_size_1000.png)
+
+
+
+
 
