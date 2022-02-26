@@ -1,5 +1,5 @@
 # DS_Contact_Process
-###GIADA PALMA - VR471280
+### GIADA PALMA - VR471280
 Project for the probability and statistics course (Master's Degree Data Science)
 
 
@@ -50,8 +50,8 @@ def return_single_time_value(population_graph, lambda_input):
 ```
 
 
-By the law of large numbers \overline{T} is an estimate for the expected value of T.
-The function below returns \overline{T}.
+By the law of large numbers T^ is an estimate for the expected value of T.
+The function below returns T^.
 ```python
 def return_average_time_steps(lambda_input, number_of_runs):    
     total_time_steps = 0
@@ -85,4 +85,6 @@ def simulate(number_of_runs):
 
 
 The result is the plot below
+<br>
+![Graph for increasing lambda](Increasing lambda.png)
 
