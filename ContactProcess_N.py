@@ -94,14 +94,12 @@ def simulate_pop_size(lambda_input, number_of_runs, pop_size):
     while pop_size > 2:
         simulations = np.append(simulations, return_average_time_steps(lambda_input, number_of_runs, population_size))
         individuals = np.append(individuals, pop_size)
-        pop_size -= 250 #Change this value for different plots
+        pop_size -= 1000 #Change this value for different plots
         population_size = return_population(pop_size)
         
     return simulations, individuals
 
 
-
-"""
 # FUNCTION CALLS POPULATION = 100
 simuls, individuals = simulate_pop_size(0.1, 100, 100)
 simuls1, individuals1 = simulate_pop_size(0.9, 100, 100)
@@ -147,26 +145,25 @@ ax2.legend()
 fig.savefig("Population_size_1000")
 
 
-"""
 #-----------------------------------------------------------------
 # FUNCTION CALLS POPULATION = 5000
-simuls, individuals = simulate_pop_size(0.1,2,5000)
-simuls1, individuals1 = simulate_pop_size(0.9,2, 5000)
+simuls, individuals = simulate_pop_size(0.1,5,5000)
+simuls1, individuals1 = simulate_pop_size(0.9,5, 5000)
 
 
 # PLOTS POPULATION = 5000
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(15,10))
 fig.suptitle('Evolution of the curve based on population size growing')
 
-ax1.plot(individuals, simuls, label='2 runs  \nλ = 0.1', color='y')
+ax1.plot(individuals, simuls, label='5 runs  \nλ = 0.1', color='y')
 ax1.set_ylabel('Average time-steps', fontsize=(8))
 ax1.set_xlabel('Population size', fontsize=(8))
 ax1.legend()
 
-ax2.plot(individuals1, simuls1, label='2 runs  \nλ = 0.9', color='y')
+ax2.plot(individuals1, simuls1, label='5 runs  \nλ = 0.9', color='y')
 ax2.set_ylabel('Average time-steps', fontsize=(8))
 ax2.set_xlabel('Population size', fontsize=(8))
 ax2.legend()
 
-fig.savefig("Population_size_5000")
+fig.savefig("Population_size_5000_2")
 

@@ -113,7 +113,6 @@ simuls5_100, lambdas5_100 = simulate_to_lambda_5(100)
 simuls5_1000, lambdas5_1000 = simulate_to_lambda_5(1000)
 
 
-
 # PLOTS
 fig, (ax1, ax3) = plt.subplots(2, 1, figsize=(15,10))
 fig.suptitle('Evolution of the curve based on λ growing')
